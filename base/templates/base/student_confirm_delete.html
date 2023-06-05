@@ -1,0 +1,14 @@
+{% extends 'base/index.html' %}
+{% block content %}
+
+<div class="header_bar">
+    <a href="{% url 'students'%}">&#8592;Back</a>
+</div>
+<div class="card_body">
+    <form method="POST">
+        {% csrf_token%}
+        <p>Are you sure you want to delete student?</p>
+        <input class="button" type="submit" value="delete" />
+    </form>
+</div>
+{% endblock content %}

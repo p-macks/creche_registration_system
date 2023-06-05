@@ -1,0 +1,13 @@
+{% extends 'base/index.html' %}
+{% block content %}
+
+<div class="header_bar">
+    <a href="{% url 'students'%}">&#8592;Back</a>
+</div>
+<form method="post" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="button" type="submit" value="Submit">
+</form>
+
+{% endblock content %}

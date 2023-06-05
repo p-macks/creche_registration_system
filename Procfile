@@ -1,0 +1,1 @@
+web gunicorn crecheregistrationsystem.wsgi:application --log-file-

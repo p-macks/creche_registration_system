@@ -1,0 +1,39 @@
+{% extends 'base/index.html' %}
+{% block content %}
+
+<div class="header_bar">
+    <div>
+        <h2>Hello {{request.user|title}}</h2>
+    </div>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %} ">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+   
+</div>
+   
+    <div id="search_add_wrapper">
+        <form method="get" style="margin-top: 20px;display: flex;">
+            <input type="text" name="search_area" value="{{search_input}}">
+            <input class="button" type="submit" value="search">
+        </form>
+        <a id="add_link" href="{% url 'student_create' %}">Add Student</a>
+    </div>
+    <hr>
+
+    <table>
+        <tr>
+            <th>Student</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{student.student_id}}</td>  
+            <td><a href="{% url 'student_update' student.id %}">Edit</a></td>
+            <td><a href="{% url 'student_delete' student.id%}">Delete</a></td>
+        </tr>
+        {% empty %}
+            <h3>No student in found</h3>
+        {% endfor %}
+    </table>
+{% endblock content %}
